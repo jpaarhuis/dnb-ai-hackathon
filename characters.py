@@ -1,0 +1,35 @@
+import streamlit as st
+
+
+def load_character_data():
+    # This function returns a list of dictionaries, each containing details about a character
+    return [
+        {"name": "Gandalf", "image": "img/gandalf.jpg", "description": "Wise and prudent, offering sage advice on risk and reward."},
+        {"name": "Tony Stark", "image": "img/tony_stark.jpg", "description": "Tech-savvy and innovative, providing cutting-edge financial strategies."},
+        {"name": "Yoda", "image": "img/yoda.jpg", "description": "Ancient wisdom on long-term investment and patience."},
+        {"name": "Harry Potter", "image": "img/harry_potter.jpg", "description": "Smart and practical, focusing on safe and steady growth."}
+    ]
+
+
+def display_character_selector(characters):
+    # Streamlit widget to let the user select a character
+    character_names = [char['name'] for char in characters]
+    selected_character_name = st.selectbox("Choose your financial advisor:", character_names)
+    return selected_character_name
+
+
+def show_character_details(characters, selected_character_name):
+    # Display the details of the selected character
+    selected_character = next(char for char in characters if char['name'] == selected_character_name)
+    st.image(selected_character['image'], width=400)  # Assuming images are stored in the same directory
+    st.write(f"You selected: {selected_character['name']}")
+    st.write(f"Description: {selected_character['description']}")
+
+
+def select_characters():
+    characters = load_character_data()
+    selected_character_name = display_character_selector(characters)
+    show_character_details(characters, selected_character_name)
+
+    # Save the selected character to session state for use in other components
+    st.session_state['selected_character'] = selected_character_name
