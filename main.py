@@ -15,8 +15,6 @@ def main():
         st.write("Please start from the character selection.")
         return
 
-    st.write(f"Advisor chosen: {st.session_state['selected_character']}")
-
     collect_financial_data()
 
     if "financial_data" not in st.session_state:
