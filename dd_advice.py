@@ -3,10 +3,23 @@ from cc_calculate_health import calculate_financial_health, interpret_score
 
 
 def show_character_advice():
+    st.subheader("Personalized Advice from Your Financial Advisor")
+
     if 'financial_data' in st.session_state and 'selected_character' in st.session_state:
         display_character_advice()
     else:
         st.error("Please ensure you have selected a character and entered your financial data.")
+
+
+def display_character_advice():
+    # Retrieve the selected character and financial score
+    character = st.session_state['selected_character']
+    data = st.session_state['financial_data']
+    score = calculate_financial_health(data['income'], data['expenses'], data['savings'], data['debt'])
+    advice = get_advice_by_character(character, score)
+
+    # Display the advice
+    st.write(f"{character} says: \"{advice}\"")
 
 
 def get_advice_by_character(character, score):
@@ -41,21 +54,4 @@ def get_advice_by_character(character, score):
     # Retrieve the category of the score for character-specific advice
     category, _ = interpret_score(score)
     return advice_templates[character][category]
-
-
-def display_character_advice():
-    st.subheader("Personalized Advice from Your Financial Advisor")
-
-    if 'financial_data' not in st.session_state or 'selected_character' not in st.session_state:
-        st.warning("Please complete the previous steps first.")
-        return
-
-    # Retrieve the selected character and financial score
-    character = st.session_state['selected_character']
-    data = st.session_state['financial_data']
-    score = calculate_financial_health(data['income'], data['expenses'], data['savings'], data['debt'])
-    advice = get_advice_by_character(character, score)
-
-    # Display the advice
-    st.write(f"{character} says: \"{advice}\"")
 

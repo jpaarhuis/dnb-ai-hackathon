@@ -2,6 +2,8 @@ import streamlit as st
 
 
 def show_financial_health():
+    st.subheader("Your Financial Health Score")
+
     # This component depends on the user having entered their financial data
     if 'financial_data' in st.session_state:
         display_financial_health()
@@ -35,17 +37,17 @@ def interpret_score(score):
 
 
 def display_financial_health():
-    st.subheader("Your Financial Health Score")
-
-    if 'financial_data' not in st.session_state:
-        st.warning("Please enter your financial data first.")
-        return
-
     # Retrieve financial data from session state
     data = st.session_state['financial_data']
+
     score = calculate_financial_health(data['income'], data['expenses'], data['savings'], data['debt'])
     category, advice = interpret_score(score)
 
     # Display results
     st.metric("Financial Health Score", f"{score:.2f}", category)
     st.info(advice)
+
+    st.write("Income:", data['income'])
+    st.write("Expenses:", data['expenses'])
+    st.write("Savings:", data['savings'])
+    st.write("Debt:", data['debt'])

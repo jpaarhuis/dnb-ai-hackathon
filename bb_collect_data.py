@@ -4,16 +4,19 @@ import streamlit as st
 def collect_financial_data():
     st.subheader("Enter your financial details")
 
-    # Collect financial inputs
-    income = st.number_input("Monthly Income (€):", min_value=0.0, format="%.2f", step=100.0)
-    expenses = st.number_input("Monthly Expenses (€):", min_value=0.0, format="%.2f", step=100.0)
-    savings = st.number_input("Total Savings (€):", min_value=0.0, format="%.2f", step=100.0)
-    debt = st.number_input("Total Debt (€):", min_value=0.0, format="%.2f", step=100.0)
+    data = st.session_state.get('financial_data', {})
 
-    # Validate the inputs
-    if expenses > income:
-        st.error("Expenses cannot exceed income. Please adjust your values.")
-        return None  # Returning None to indicate an error in input
+    # Default values
+    income = data['income'] if 'income' in data else 0.0
+    expenses = data['expenses'] if 'expenses' in data else 0.0
+    savings = data['savings'] if 'savings' in data else 0.0
+    debt = data['debt'] if 'debt' in data else 0.0
+
+    # Collect financial inputs
+    income = st.number_input("Monthly Income (€):", min_value=0.0, format="%.2f", step=100.0, value=income)
+    expenses = st.number_input("Monthly Expenses (€):", min_value=0.0, format="%.2f", step=100.0, value=expenses)
+    savings = st.number_input("Total Savings (€):", min_value=0.0, format="%.2f", step=100.0, value=savings)
+    debt = st.number_input("Total Debt (€):", min_value=0.0, format="%.2f", step=100.0, value=debt)
 
     # Save inputs to session state if validation passes
     st.session_state['financial_data'] = {
