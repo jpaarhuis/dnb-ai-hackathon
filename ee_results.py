@@ -22,7 +22,7 @@ def display_results():
 
     # Display the character-specific advice
     st.write(f"Advice from {st.session_state['selected_character']}:")
-    st.markdown(f"> {advice}")
+    st.info(f"{advice}")
 
     # Optional: Include visual enhancements or additional graphical representations
     # For example, display a chart of income vs. expenses

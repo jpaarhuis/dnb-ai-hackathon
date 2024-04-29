@@ -15,10 +15,11 @@ def calculate_financial_health(income, expenses, savings, debt):
     # Basic financial health metrics
     debt_to_income_ratio = debt / income if income else 0
     savings_rate = savings / income if income else 0
+    expenses_to_income_ratio = expenses / income if income else 0
 
-    # Calculate a simple financial health score
+    # Calculate financial health score
     # The formula here is illustrative; you might want to refine it based on your criteria
-    score = 100 - (debt_to_income_ratio * 50) + (savings_rate * 50)
+    score = 100 - (debt_to_income_ratio * 30) + (savings_rate * 50) - (expenses_to_income_ratio * 20)
     score = max(min(score, 100), 0)  # Ensure score is between 0 and 100
 
     return score
@@ -29,11 +30,11 @@ def interpret_score(score):
     if score >= 75:
         return "Excellent", "You are in great financial health! Keep up the good work!"
     elif score >= 50:
-        return "Good", "Your financial health is good, but there's room for improvement."
+        return "Decent", "Your financial health is good, but there's room for improvement."
     elif score >= 25:
-        return "Fair", "Consider reviewing your financial habits to improve your health."
+        return "Poor", "Consider reviewing your financial habits to improve your health."
     else:
-        return "Poor", "It's important to take immediate action to improve your financial situation."
+        return "Rubbish", "It's important to take immediate action to improve your financial situation."
 
 
 def display_financial_health():

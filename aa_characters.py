@@ -25,7 +25,10 @@ def load_character_data():
 def display_character_selector(characters):
     # Streamlit widget to let the user select a character
     character_names = [char['name'] for char in characters]
-    selected_character_name = st.selectbox("Choose your financial advisor:", character_names)
+
+    # Check if a character has already been selected
+    default_index = character_names.index(st.session_state.get('selected_character', character_names[0]))
+    selected_character_name = st.selectbox("Choose your financial advisor:", character_names, index=default_index)
     return selected_character_name
 
 
