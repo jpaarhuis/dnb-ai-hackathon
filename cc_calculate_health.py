@@ -1,6 +1,14 @@
 import streamlit as st
 
 
+def show_financial_health():
+    # This component depends on the user having entered their financial data
+    if 'financial_data' in st.session_state:
+        display_financial_health()
+    else:
+        st.error("Financial data is missing. Please go back and enter your financial details.")
+
+
 def calculate_financial_health(income, expenses, savings, debt):
     # Basic financial health metrics
     debt_to_income_ratio = debt / income if income else 0
@@ -41,11 +49,3 @@ def display_financial_health():
     # Display results
     st.metric("Financial Health Score", f"{score:.2f}", category)
     st.info(advice)
-
-
-def show_financial_health():
-    # This component depends on the user having entered their financial data
-    if 'financial_data' in st.session_state:
-        display_financial_health()
-    else:
-        st.error("Financial data is missing. Please go back and enter your financial details.")

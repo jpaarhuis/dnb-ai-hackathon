@@ -1,5 +1,12 @@
 import streamlit as st
-from calculate_health import calculate_financial_health, interpret_score
+from cc_calculate_health import calculate_financial_health, interpret_score
+
+
+def show_character_advice():
+    if 'financial_data' in st.session_state and 'selected_character' in st.session_state:
+        display_character_advice()
+    else:
+        st.error("Please ensure you have selected a character and entered your financial data.")
 
 
 def get_advice_by_character(character, score):
@@ -51,11 +58,4 @@ def display_character_advice():
 
     # Display the advice
     st.write(f"{character} says: \"{advice}\"")
-
-
-def show_character_advice():
-    if 'financial_data' in st.session_state and 'selected_character' in st.session_state:
-        display_character_advice()
-    else:
-        st.error("Please ensure you have selected a character and entered your financial data.")
 

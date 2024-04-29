@@ -7,5 +7,5 @@ A `streamlit` app build for the AI workshop at DNB.
 To run the app, execute the following command:
 
 ```bash
-streamlit run app.py
+streamlit run main.py
 ```

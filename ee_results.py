@@ -1,6 +1,6 @@
 import streamlit as st
-from advice import get_advice_by_character
-from calculate_health import calculate_financial_health, interpret_score
+from dd_advice import get_advice_by_character
+from cc_calculate_health import calculate_financial_health, interpret_score
 
 
 def display_results():

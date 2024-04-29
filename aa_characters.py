@@ -1,6 +1,17 @@
 import streamlit as st
 
 
+def select_characters():
+    st.subheader("Select your Financial Advisor")
+
+    characters = load_character_data()
+    selected_character_name = display_character_selector(characters)
+    show_character_details(characters, selected_character_name)
+
+    # Save the selected character to session state for use in other components
+    st.session_state['selected_character'] = selected_character_name
+
+
 def load_character_data():
     # This function returns a list of dictionaries, each containing details about a character
     return [
@@ -21,15 +32,6 @@ def display_character_selector(characters):
 def show_character_details(characters, selected_character_name):
     # Display the details of the selected character
     selected_character = next(char for char in characters if char['name'] == selected_character_name)
-    st.image(selected_character['image'], width=400)  # Assuming images are stored in the same directory
     st.write(f"You selected: {selected_character['name']}")
     st.write(f"Description: {selected_character['description']}")
-
-
-def select_characters():
-    characters = load_character_data()
-    selected_character_name = display_character_selector(characters)
-    show_character_details(characters, selected_character_name)
-
-    # Save the selected character to session state for use in other components
-    st.session_state['selected_character'] = selected_character_name
+    st.image(selected_character['image'], width=400)  # Assuming images are stored in the same directory
