@@ -8,7 +8,7 @@ health score and provide personalized advice.
 '''
 
 
-def collect_financial_data():
+def step2_collect_financial_data():
     st.subheader("Enter your financial details")
 
     data = st.session_state.get('financial_data', {})

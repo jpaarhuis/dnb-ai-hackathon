@@ -1,9 +1,9 @@
 import streamlit as st
-from aa_characters import select_characters
-from bb_collect_data import collect_financial_data
-from cc_calculate_health import show_financial_health
-from dd_advice import show_character_advice
-from ee_results import display_results
+from aa_characters import step1_select_characters
+from bb_collect_data import step2_collect_financial_data
+from cc_calculate_health import step3_show_financial_health
+from dd_advice import step4_show_character_advice
+from ee_results import step5_display_results
 
 # Welcome to the Movie Character Financial Advisor app!
 
@@ -20,11 +20,11 @@ def main():
         st.session_state['current_step'] = 1
 
     steps = {
-        1: select_characters,
-        2: collect_financial_data,
-        3: show_financial_health,
-        4: show_character_advice,
-        5: display_results
+        1: step1_select_characters,
+        2: step2_collect_financial_data,
+        3: step3_show_financial_health,
+        4: step4_show_character_advice,
+        5: step5_display_results
     }
 
     col1, col2, col3 = st.columns(3)

@@ -7,7 +7,7 @@ This is the place to get crazy with visualizations, add more detailed advice, or
 '''
 
 
-def display_results():
+def step5_display_results():
     st.subheader("Financial Health Overview")
 
     if 'financial_data' not in st.session_state or 'selected_character' not in st.session_state:

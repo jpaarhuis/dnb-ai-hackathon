@@ -8,7 +8,7 @@ movie character!
 '''
 
 
-def show_character_advice():
+def step4_show_character_advice():
     st.subheader("Personalized Advice from Your Financial Advisor")
 
     if 'financial_health' not in st.session_state or 'selected_character' not in st.session_state:

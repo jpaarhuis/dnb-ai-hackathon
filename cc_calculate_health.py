@@ -8,7 +8,7 @@ Show the score to the user and optionally add some basic commentary on their fin
 '''
 
 
-def show_financial_health():
+def step3_show_financial_health():
     st.subheader("Your Financial Health Score")
 
     # This component depends on the user having entered their financial data

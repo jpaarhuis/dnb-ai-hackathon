@@ -6,7 +6,7 @@ There are 4 example characters to choose from, but feel free to add your own!
 '''
 
 
-def select_characters():
+def step1_select_characters():
     st.subheader("Select your Financial Advisor")
 
     characters = load_character_data()
