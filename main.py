@@ -5,6 +5,13 @@ from cc_calculate_health import show_financial_health
 from dd_advice import show_character_advice
 from ee_results import display_results
 
+# Welcome to the Movie Character Financial Advisor app!
+
+# This app helps you get financial advice from your favorite movie characters.
+# The main function is already implemented for you, see the README on how to run it.
+# Now it's your turn to complete the missing parts in the other Python files!
+# Have fun and good luck!
+
 
 def main():
     st.title("Movie Character Financial Advisor")

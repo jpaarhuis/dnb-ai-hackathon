@@ -1,31 +1,39 @@
 import streamlit as st
-from cc_calculate_health import calculate_financial_health, interpret_score
+
+'''
+This is step 4 of the app: providing personalized financial advice based on the user's financial health score.
+
+Use the financial health score calculated in the previous step to provide personalized advice from the selected
+movie character!
+'''
 
 
 def show_character_advice():
     st.subheader("Personalized Advice from Your Financial Advisor")
 
-    if 'financial_data' in st.session_state and 'selected_character' in st.session_state:
-        display_character_advice()
-    else:
+    if 'financial_health' not in st.session_state or 'selected_character' not in st.session_state:
         st.error("Please ensure you have selected a character and entered your financial data.")
+        return
 
-
-def display_character_advice():
-    # Retrieve the selected character and financial score
     character = st.session_state['selected_character']
-    data = st.session_state['financial_data']
-    score = calculate_financial_health(data['income'], data['expenses'], data['savings'], data['debt'])
-    advice = get_advice_by_character(character, score)
+    financial_health = st.session_state['financial_health']
+
+    advice = get_advice_by_character(character, financial_health['category'])
+
+    # Save the advice in the session state
+    st.session_state['character_advice'] = advice
 
     # Display the advice
+    display_character_advice(character, advice)
+
+
+def display_character_advice(character, advice):
     st.info(f"{character} says: \"{advice}\"")
 
-    # Display the characters image
     st.image(f"img/{character.lower().replace(' ', '_')}.jpg", caption=character, use_column_width=True)
 
 
-def get_advice_by_character(character, score):
+def get_advice_by_character(character, category):
     # Define character-specific advice based on the score
     advice_templates = {
         "Gandalf": {
@@ -54,7 +62,5 @@ def get_advice_by_character(character, score):
         }
     }
 
-    # Retrieve the category of the score for character-specific advice
-    category, _ = interpret_score(score)
     return advice_templates[character][category]
 

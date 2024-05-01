@@ -1,6 +1,10 @@
 import streamlit as st
-from dd_advice import get_advice_by_character
-from cc_calculate_health import calculate_financial_health
+
+'''
+This is the final step of the app: summarizing everything and displaying the user's financial health overview.
+
+This is the place to get crazy with visualizations, add more detailed advice, or even include some interactive elements!
+'''
 
 
 def display_results():
@@ -11,9 +15,10 @@ def display_results():
         return
 
     # Retrieve financial data and calculate the score
-    data = st.session_state['financial_data']
-    score = calculate_financial_health(data['income'], data['expenses'], data['savings'], data['debt'])
-    advice = get_advice_by_character(st.session_state['selected_character'], score)
+    financial_data = st.session_state['financial_data']
+    character = st.session_state['selected_character']
+    score = st.session_state['financial_health']['score']
+    advice = st.session_state['character_advice']
 
     # Display the score with a dynamic progress bar
     st.write(f"Your Financial Health Score: {score:.2f}")
@@ -21,10 +26,9 @@ def display_results():
     progress_bar.progress(score / 100)
 
     # Display the character-specific advice
-    st.write(f"Advice from {st.session_state['selected_character']}:")
+    st.write(f"Advice from {character}:")
     st.info(f"{advice}")
 
     # Optional: Include visual enhancements or additional graphical representations
     # For example, display a chart of income vs. expenses
-    st.bar_chart({"Income": [data['income']], "Expenses": [data['expenses']]})
-
+    st.bar_chart({"Income": [financial_data['income']], "Expenses": [financial_data['expenses']]})

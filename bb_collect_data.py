@@ -1,5 +1,12 @@
 import streamlit as st
 
+'''
+This is step 2 of the app: collecting the user's financial data.
+
+Feel free to add as many input fields as you want. This data will be used later to calculate the user's financial
+health score and provide personalized advice.
+'''
+
 
 def collect_financial_data():
     st.subheader("Enter your financial details")
@@ -25,4 +32,3 @@ def collect_financial_data():
         'savings': savings,
         'debt': debt
     }
-    return income, expenses, savings, debt
