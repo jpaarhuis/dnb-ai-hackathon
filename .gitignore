@@ -7,3 +7,6 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .DS_Store
+
+### Python ###
+__pycache__
