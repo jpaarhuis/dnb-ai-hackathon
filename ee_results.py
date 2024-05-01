@@ -16,7 +16,7 @@ def display_results():
     advice = get_advice_by_character(st.session_state['selected_character'], score)
 
     # Display the score with a dynamic progress bar
-    st.write("Your Financial Health Score:")
+    st.write(f"Your Financial Health Score: {score:.2f}")
     progress_bar = st.progress(0)
     progress_bar.progress(score / 100)
 
