@@ -20,14 +20,26 @@ Useful to know:
 - The main file is `main_app.py`
 - Streamlit code is executed from top to bottom on each page refresh or input change
 - Are you stuck? Use the branches for checkpoints
-- See more information about the assignments in the [assignment document](assignments/assignments.pdf)
+
+## Assignments
+
+**Assignment 1**: create a webapp without writing code. Let the AI do the work!
+**Assignment 2**: let OpenAI's GPT-3.5 analyse the code and generate a summary
+
+See more information about the assignments in the [assignment document](assignments/assignments.pdf).
+
+Ask for OpenAI API key from the organizers. Don't commit the key to GitHub.
+
+### Resources
+- [Streamlit documentation](https://docs.streamlit.io/)
+- [OpenAI API documentation](https://platform.openai.com/docs/api-reference/chat)
+- [Your GitHub codespaces](https://github.com/codespaces)
 
 ## Run Locally (not in codespace)
 
 ### Prerequisites
 - Python 3.6+
 - pip
-- virtualenv
 
 ### Instructions
 To run the app locally, execute the following commands:
