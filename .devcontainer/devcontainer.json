@@ -31,5 +31,8 @@
   },
   "forwardPorts": [
     8501
-  ]
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:2": "2.0.5"
+  }
 }
